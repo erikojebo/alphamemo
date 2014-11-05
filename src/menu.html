@@ -1,25 +1,21 @@
-<section class='list-container'>
-  <ul id='board-sizes'>
-    <li>
-      <img src='images/small_board.png' alt='Play using a small board' ng-click="tileCount = 6" />
-    </li>
-    <li>
-      <img src='images/medium_board.png' alt='Play using a medium board' ng-click="tileCount = 12"/>
-    </li>
-    <li>
-      <img src='images/large_board.png' alt='Play using a large board' ng-click="tileCount = 20"/>
-    </li>
-  </ul>
-</section>
+<section id='menu-container'>
 
-<section class='list-container'>
-  <ul id='game-types'>
-    <li>AB</li>
-    <li>Aa</li>
-    <li>12</li>
-  </ul>
-</section>
+    <ul id='board-sizes'>
+      <li ng-repeat="tileSetup in tileSetups" ng-class="{ 'selected': tileSetup.isSelected }">
+        <img ng-src='{{ tileSetup.imageSource }}'
+             alt='Play using a {{ tileSetup.description }} board'
+             ng-click="selectTileSetup(tileSetup)" />
+      </li>
+    </ul>
 
-<menu>
-  <a id="play" href="#/board/{{ tileCount }}">Play<a />
-</menu>
+    <ul id='game-types'>
+      <li>AB</li>
+      <li>Aa</li>
+      <li>12</li>
+    </ul>
+
+    <menu>
+      <a id="play" href="#/board/{{ tileCount }}">Play<a />
+    </menu>
+
+</section>
