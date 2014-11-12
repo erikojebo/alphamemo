@@ -1,14 +1,38 @@
 angular.module("alphamemo").controller("boardController", function ($scope, $routeParams) {
 
-    var tiles = [];
+    function createTileViewModel(rowIndex, columnIndex) {
+        var cell = {
+            value: String.fromCharCode(65 + (rowIndex % (rowCount * columnCount / 2))),
+            isFlipped: false
+        };
 
-    var tileCount = $routeParams.tileCount;
-
-    for (var i = 0; i < tileCount; i++) {
-        tiles.push({
-            value: String.fromCharCode(65 + (i % (tileCount / 2)))
-        });
+        cell.flip = function () {
+            cell.isFlipped = true;
+        };
+        
+        return cell;
     }
 
-    $scope.tiles = tiles;
+    var tiles = [];
+
+    var boardSize = $routeParams.tileCount;
+    var parts = boardSize.split('x');
+    var rowCount = parts[0];
+    var columnCount = parts[1];
+
+    var tileRows = [];
+
+    for (var rowIndex = 0; rowIndex < rowCount; rowIndex++) {
+        var row = [];
+
+        for (var columnIndex = 0; columnIndex < columnCount; columnIndex++) {
+
+            var cell = createTileViewModel(rowIndex, columnIndex);
+            row.push(cell);
+        }
+
+        tileRows.push(row);
+    }
+
+    $scope.tileRows = tileRows;
 });

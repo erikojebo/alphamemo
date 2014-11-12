@@ -1,10 +1,14 @@
 <section id='menu-container'>
 
     <ul id='board-sizes'>
-      <li ng-repeat="tileSetup in tileSetups" ng-class="{ 'selected': tileSetup.isSelected }">
-        <img ng-src='{{ tileSetup.imageSource }}'
-             alt='Play using a {{ tileSetup.description }} board'
-             ng-click="selectTileSetup(tileSetup)" />
+      <li ng-repeat="tileSetup in tileSetups"
+          ng-class="{ 'selected': tileSetup.isSelected }"
+          ng-click='selectTileSetup(tileSetup)'>
+        <table>
+          <tr ng-repeat='row in tileSetup.rows'>
+            <td ng-repeat='column in tileSetup.columns'></td>
+          </tr>
+        </table>
       </li>
     </ul>
 
@@ -15,7 +19,7 @@
     </ul>
 
     <menu>
-      <a id="play" href="#/board/{{ tileCount }}">Play<a />
+      <a id="play" href="#/board/{{ sizeIdentifier }}">Play<a />
     </menu>
 
 </section>

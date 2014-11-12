@@ -1,6 +1,11 @@
-<ul class='tile-count-{{ tiles.length  }}'>
-  <li ng-repeat="tile in tiles">
-    <div class="front">{{ tile.value }}</div>
-    <!-- <div class="back"></div> -->
-  </li>
-</ul>
+<table class='flip'>
+  <tr ng-repeat="row in tileRows">
+    <td ng-repeat="tile in row"
+        ng-click='tile.flip()'>
+      <div class='card' ng-class="{ 'flipped': tile.isFlipped }">
+        <div class="face front"><span class='val'>{{ tile.value }}</span></div>
+        <div class="face back"></div>
+      </div>
+    </td>
+  </tr>
+</table>
