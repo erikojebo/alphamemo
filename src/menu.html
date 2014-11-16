@@ -13,9 +13,11 @@
     </ul>
 
     <ul id='game-types'>
-      <li>AB</li>
-      <li>Aa</li>
-      <li>12</li>
+      <li ng-repeat='gameType in gameTypes'
+          ng-class="{ 'selected': gameType.isSelected }"
+          ng-click='selectGameType(gameType)'>
+        <span>{{ gameType.description }}</span>
+      </li>
     </ul>
 
     <menu>

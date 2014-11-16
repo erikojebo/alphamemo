@@ -6,7 +6,7 @@ angular.module("alphamemo").controller("menuController", function ($scope) {
         for (var i = 0; i < length; i++) {
             values.push(i);
         }
-        
+
         return values;
     }
 
@@ -18,6 +18,13 @@ angular.module("alphamemo").controller("menuController", function ($scope) {
         };
     }
 
+    function createGameTypeViewModel(description, identifier) {
+        return {
+            description: description,
+            identifier: identifier
+        };
+    }
+
     $scope.tileCount = 0;
 
     $scope.tileSetups = [
@@ -25,14 +32,42 @@ angular.module("alphamemo").controller("menuController", function ($scope) {
         createTileSetupViewModel(4,3),
         createTileSetupViewModel(5,4)
     ];
-    
-    $scope.selectTileSetup = function (tileSetup) {
-        $scope.sizeIdentifier = tileSetup.sizeIdentifier;
 
-        for (var i = 0; i < $scope.tileSetups.length; i++) {
-            $scope.tileSetups[i].isSelected = false;
+    $scope.gameTypes = [
+        createGameTypeViewModel("AB", "uppercase"),
+        createGameTypeViewModel("Ab", "mixedcase"),
+        createGameTypeViewModel("12", "numbers")
+    ];
+
+    $scope.selectedTileSetupIdentifier = function () {
+        return getSelectedIdenifier($scope.tileSetups);
+    };
+
+    $scope.selectedGameTypeIdentifier = function () {
+        return getSelectedIdenifier($scope.gameTypes);
+    };
+
+    $scope.selectGameType = function (gameType) {
+        selectItem($scope.gameTypes, gameType);
+    };
+
+    $scope.selectTileSetup = function (tileSetup) {
+        selectItem($scope.tileSetups, tileSetup);
+    };
+
+    function getSelectedIdenifier(items) {
+        var selectedItem = _.first(items, function (item) {
+            return item.isSelected;
+        });
+
+        return selectedItem ? selectedItem.identifier : undefined;
+    }
+
+    function selectItem(collection, item) {
+        for (var i = 0; i < collection.length; i++) {
+            collection[i].isSelected = false;
         }
 
-        tileSetup.isSelected = true;
-    };
+        item.isSelected = true;
+    }
 });

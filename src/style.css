@@ -7,25 +7,39 @@ body {
     background-color: white;
 }
 
-#board-sizes li {
+#board-sizes li, #game-types li {
     padding: 3px;
 }
 
-#board-sizes .selected {
-    border-width: 5px;
+#board-sizes .selected, #game-types .selected {
     padding: 0px;
 }
 
-/* #board-sizes .selected td { */
-/*     background-color: #99b433; */
-/* } */
+#board-sizes .selected, #game-types .selected {
+    border-width: 5px;
+    transition: border-width 0.2s;
+}
+
+#menu-container ul {
+    height: 30%;
+    max-height: 200px;
+}
+
+#game-types {
+    margin-top: 30px;
+}
+
+#game-types li span {
+    display: inline-block;
+    margin-top: 20px;
+}
 
 #menu-container {
     text-align: center;
 }
 
 #menu-container li {
-    height: 30%;
+    height: 100%;
     width: 28%;
     max-height: 200px;
 
@@ -54,9 +68,10 @@ ul {
 li {
     list-style: none;    
     display: inline-block;
+    cursor: pointer;
 }
 
-td, li {
+td, li, a#play {
     border: 2px solid white;
     color: white;
     font-size: 100px;
@@ -72,16 +87,8 @@ img {
     width: 100%;
 }
 
-#game-types {
-    margin-top: 50px;
-}
-
-#game-types li {
-    padding-top: 20px;
-}
-
 menu {
-    margin-top: 50px;
+    margin-top: 30px;
     width: 100%;
     text-align: center;
 }
@@ -93,11 +100,26 @@ a {
 
 a#play {
     text-transform: uppercase;
-    font-size: 40px;
+    font-size: 50px;
+    display: inline-block;
+    width: 200px;
+    height: 75px;
+    line-height: 75px;
 }
 
 @media all and (min-width: 600px) {
+    
+}
+
+@media all and (max-width: 600px) {
+    #game-types li {
+        font-size: 75px;
+        padding-top: 50px;
+    }
 }
 
 @media all and (max-width: 420px) {
+    #game-types li {
+        font-size: 60px;
+    }
 }
