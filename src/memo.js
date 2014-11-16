@@ -6,7 +6,7 @@ app.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'menu.html',
             controller: 'menuController'
         })
-        .when('/board/:tileCount', {
+        .when('/board/:gameType/:boardSize', {
             templateUrl: 'board.html',
             controller: 'boardController'
         })

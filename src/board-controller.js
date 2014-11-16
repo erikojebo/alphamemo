@@ -1,8 +1,21 @@
 angular.module("alphamemo").controller("boardController", function ($scope, $routeParams) {
 
-    function createTileViewModel(rowIndex, columnIndex) {
+    function createTileValues(gameType, tileCount) {
+        var values = [];
+
+        for (var i = 0; i < tileCount / 2; i++) {
+            values.push({
+                value1: 'A' + i,
+                value2: 'A' + i
+            });
+        }
+        
+        return values;
+    }
+
+    function createTileViewModel(value) {
         var cell = {
-            value: String.fromCharCode(65 + (rowIndex % (rowCount * columnCount / 2))),
+            value: value,
             isFlipped: false
         };
 
@@ -15,23 +28,38 @@ angular.module("alphamemo").controller("boardController", function ($scope, $rou
 
     var tiles = [];
 
-    var boardSize = $routeParams.tileCount;
+    var boardSize = $routeParams.boardSize;
+    var gameType = $routeParams.gameType;
+
     var parts = boardSize.split('x');
     var rowCount = parts[0];
     var columnCount = parts[1];
 
+    var tileValuePairs = createTileValues(gameType, rowCount * columnCount);
+    var tileViewModels = [];
+
+    for (var pairIndex = 0; pairIndex < tileValuePairs.length; pairIndex++) {
+        tileViewModels.push(createTileViewModel(tileValuePairs[pairIndex].value1));
+        tileViewModels.push(createTileViewModel(tileValuePairs[pairIndex].value2));
+    }
+
+    tileViewModels = _.shuffle(tileViewModels);
+
     var tileRows = [];
 
-    for (var rowIndex = 0; rowIndex < rowCount; rowIndex++) {
+    function createRow(rowIndex) {
         var row = [];
 
         for (var columnIndex = 0; columnIndex < columnCount; columnIndex++) {
-
-            var cell = createTileViewModel(rowIndex, columnIndex);
-            row.push(cell);
+            var tileIndex = rowIndex * rowCount + columnIndex;
+            row.push(tileViewModels[tileIndex]);
         }
 
-        tileRows.push(row);
+        return row;
+    }
+
+    for (var rowIndex = 0; rowIndex < rowCount; rowIndex++) {
+        tileRows.push(createRow(rowIndex));
     }
 
     $scope.tileRows = tileRows;

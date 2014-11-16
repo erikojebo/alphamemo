@@ -14,7 +14,7 @@ angular.module("alphamemo").controller("menuController", function ($scope) {
         return {
             rows: range(rowCount),
             columns: range(columnCount),
-            sizeIdentifier: rowCount + 'x' + columnCount
+            identifier: rowCount + 'x' + columnCount
         };
     }
 
@@ -56,7 +56,7 @@ angular.module("alphamemo").controller("menuController", function ($scope) {
     };
 
     function getSelectedIdenifier(items) {
-        var selectedItem = _.first(items, function (item) {
+        var selectedItem = _.find(items, function (item) {
             return item.isSelected;
         });
 
