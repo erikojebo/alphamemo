@@ -1,4 +1,4 @@
-angular.module("alphamemo").controller("boardController", function ($scope, $routeParams) {
+angular.module("alphamemo").controller("boardController", function ($scope, $routeParams, $timeout) {
 
     function parseGameConfiguration() {
         var boardSize = $routeParams.boardSize;
@@ -20,5 +20,5 @@ angular.module("alphamemo").controller("boardController", function ($scope, $rou
 
     var gameConfig = parseGameConfiguration();
 
-    $scope.board = memo.viewModels.board.create(gameConfig);
+    $scope.board = memo.viewModels.board.create(gameConfig, $timeout);
 });

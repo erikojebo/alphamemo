@@ -71,7 +71,7 @@ li {
     cursor: pointer;
 }
 
-td, li, a#play {
+.card, li, a#play {
     border: 2px solid white;
     color: white;
     font-size: 100px;
