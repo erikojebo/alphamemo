@@ -1,5 +1,5 @@
 <table class='flip'>
-  <tr ng-repeat="row in tileRows">
+  <tr ng-repeat="row in board.rows">
     <td ng-repeat="tile in row"
         ng-click='tile.flip()'>
       <div class='card' ng-class="{ 'flipped': tile.isFlipped }">

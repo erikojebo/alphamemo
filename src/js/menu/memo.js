@@ -1,3 +1,5 @@
+var memo = memo || {};
+
 var app = angular.module("alphamemo", ["ngRoute"]);
 
 app.config(['$routeProvider', function($routeProvider) {
