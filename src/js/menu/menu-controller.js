@@ -55,6 +55,12 @@ angular.module("alphamemo").controller("menuController", function ($scope) {
         selectItem($scope.tileSetups, tileSetup);
     };
 
+    $scope.isSetupComplete = function () {
+        return $scope.selectedTileSetupIdentifier() &&
+            $scope.selectedGameTypeIdentifier();
+    };
+
+
     function getSelectedIdenifier(items) {
         var selectedItem = _.find(items, function (item) {
             return item.isSelected;

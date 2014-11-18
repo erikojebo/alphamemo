@@ -18,7 +18,13 @@ angular.module("alphamemo").controller("boardController", function ($scope, $rou
         };
     }
 
+    function resetBoard() {
+        $scope.board = memo.viewModels.board.create(gameConfig, $timeout);
+    }
+
     var gameConfig = parseGameConfiguration();
 
-    $scope.board = memo.viewModels.board.create(gameConfig, $timeout);
+    $scope.resetBoard = resetBoard;
+
+    resetBoard();
 });

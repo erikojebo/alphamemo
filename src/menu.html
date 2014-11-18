@@ -21,7 +21,11 @@
     </ul>
 
     <menu>
-      <a id="play" href="#/board/{{ selectedGameTypeIdentifier() }}/{{ selectedTileSetupIdentifier() }}/">Play<a />
+      <a id="play"
+         href="#/board/{{ selectedGameTypeIdentifier() }}/{{ selectedTileSetupIdentifier() }}/"
+         ng-class="{ 'enabled': isSetupComplete() }">
+        <i class='fa fa-play'></i>
+        <a />
     </menu>
 
 </section>

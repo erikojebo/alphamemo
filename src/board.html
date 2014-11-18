@@ -9,3 +9,8 @@
     </td>
   </tr>
 </table>
+
+<menu id="game-menu" ng-class="{ 'focus': board.isFinished() }">
+  <a href='#/menu'><i class='fa fa-home'></i class='fa fa-rotate-left'></a>
+  <a href="" ng-click="resetBoard()"><i class='fa fa-rotate-left'></i></a>
+</menu>

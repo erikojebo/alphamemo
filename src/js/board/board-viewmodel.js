@@ -77,8 +77,15 @@ memo.viewModels.board.create = function (gameConfig, timeoutService) {
         }
     };
 
+    function isFinished() {
+        return _.all(tileViewModels, function (vm) {
+            return vm.isMatched;
+        });
+    }
+    
     return {
         rows: tileRows,
-        flip: flip
+        flip: flip,
+        isFinished: isFinished
     };
 };

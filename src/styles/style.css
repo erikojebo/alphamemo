@@ -3,74 +3,6 @@ body {
     font-family: arial;
 }
 
-#board-sizes td {
-    background-color: white;
-}
-
-#board-sizes li, #game-types li {
-    padding: 3px;
-}
-
-#board-sizes .selected, #game-types .selected {
-    padding: 0px;
-}
-
-#board-sizes .selected, #game-types .selected {
-    border-width: 5px;
-    transition: border-width 0.2s;
-}
-
-#menu-container ul {
-    height: 30%;
-    max-height: 200px;
-}
-
-#game-types {
-    margin-top: 30px;
-}
-
-#game-types li span {
-    display: inline-block;
-    margin-top: 20px;
-}
-
-#menu-container {
-    text-align: center;
-}
-
-#menu-container li {
-    height: 100%;
-    width: 28%;
-    max-height: 200px;
-
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;         /* Opera/IE 8+ */
-}
-
-table {
-    width: 100%;
-    height: 100%;
-    border-collapse: separate;
-    border-spacing: 10px;
-    max-width: 800px;
-}
-
-ul, table {
-    margin: 0 auto;
-}
-
-ul {
-    list-style: none;
-    max-width: 600px;
-}
-
-li {
-    list-style: none;    
-    display: inline-block;
-    cursor: pointer;
-}
-
 .card, li, a#play {
     border: 2px solid white;
     color: white;
@@ -78,48 +10,7 @@ li {
     margin: 5px;
 }
 
-td {
-    text-align: center;
-    vertical-align: middle;
-}
-
-img {
-    width: 100%;
-}
-
-menu {
-    margin-top: 30px;
-    width: 100%;
-    text-align: center;
-}
-
 a {
     color: white;
     text-decoration: none;
-}
-
-a#play {
-    text-transform: uppercase;
-    font-size: 50px;
-    display: inline-block;
-    width: 200px;
-    height: 75px;
-    line-height: 75px;
-}
-
-@media all and (min-width: 600px) {
-    
-}
-
-@media all and (max-width: 600px) {
-    #game-types li {
-        font-size: 75px;
-        padding-top: 50px;
-    }
-}
-
-@media all and (max-width: 420px) {
-    #game-types li {
-        font-size: 60px;
-    }
 }
