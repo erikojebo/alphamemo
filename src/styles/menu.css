@@ -50,13 +50,14 @@ ul {
     max-width: 600px;
 }
 
-li {
+#menu-container li {
     list-style: none;    
     display: inline-block;
     cursor: pointer;
+    font-size: 100px;
 }
 
-menu {
+#menu-container menu {
     margin-top: 30px;
     width: 100%;
     text-align: center;
@@ -85,8 +86,30 @@ a#play.enabled {
     }
 }
 
+@media all and (max-height: 600px) {
+    #game-types li {
+        font-size: 75px;
+        padding-top: 2px;
+    }
+}
+
 @media all and (max-width: 420px) {
     #game-types li {
         font-size: 60px;
+    }
+}
+
+@media all and (max-height: 400px) {
+    #game-types li {
+        padding-top: 0;
+        font-size: 60px;
+    }
+
+    a#play {
+        font-size: 60px;
+    }
+
+    #game-types {
+        margin-top: 15px;
     }
 }

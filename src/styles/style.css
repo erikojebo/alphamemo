@@ -1,16 +1,22 @@
 body {
     background-color: #99b433;
     font-family: arial;
+    padding-top: 30px;
 }
 
 .card, li, a#play {
     border: 2px solid white;
     color: white;
-    font-size: 100px;
     margin: 5px;
 }
 
 a {
     color: white;
     text-decoration: none;
+}
+
+@media all and (max-height: 400px) {
+    body {
+        padding-top: 5px;
+    }
 }
