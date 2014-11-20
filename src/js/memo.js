@@ -16,3 +16,9 @@ app.config(['$routeProvider', function($routeProvider) {
           redirectTo: '/menu'
       });;
 }]);
+
+if ('addEventListener' in document) {
+    document.addEventListener('DOMContentLoaded', function() {
+        Origami.fastclick(document.body);
+    }, false);
+}
