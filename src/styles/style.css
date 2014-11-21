@@ -4,7 +4,7 @@ body {
     padding-top: 30px;
 }
 
-.card, li, a#play {
+.card .face, li, a#play {
     border: 2px solid white;
     color: white;
     margin: 5px;
