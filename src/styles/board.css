@@ -25,11 +25,14 @@ td {
 
 .flip {
     -webkit-perspective: 3000;
+    perspective: 3000;
+    
     position: relative;
 }
 
 .flip .card.flipped {
     -webkit-transform: rotatey(-180deg);
+    transform: rotatey(-180deg);
 }
 
 .flip .card {
@@ -37,21 +40,29 @@ td {
     width: 100%;
     height: 100%;
     font-size: 100px;
+    position: relative;
 
     -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+
     -webkit-transition: 0.5s;
+    transition: 0.5s;
 }
 
 .flip .card .face {
     width: 100%;
     height: 100%;
     position: absolute;
-    -webkit-backface-visibility: hidden;
     z-index: 2;
+    
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 .flip .card .front {
     -webkit-transform: rotatey(-180deg);
+    transform: rotatey(-180deg);
+    
     position: absolute;
     z-index: 1;
     cursor: pointer;
