@@ -8,7 +8,7 @@ module.exports = function(grunt) {
             dist: ['dist']
         },
         copy: {
-            appjs: {
+            concatinatedJs: {
                 expand: true,
                 cwd: '.tmp/appjs/',
                 src: '*',
@@ -54,12 +54,17 @@ module.exports = function(grunt) {
             options: {
                 sourceMap: true
             },
-            dist: {
-                src : [
+            lib: {
+                src: [
                     'src/js/lib/angular.js',
                     'src/js/lib/angular-route.js',
                     'src/js/lib/lodash.js',
-                    'src/js/lib/fastclick.js',
+                    'src/js/lib/fastclick.js'
+                ],
+                dest: '.tmp/appjs/lib.js'
+            },
+            app: {
+                src: [
                     'src/js/memo.js',
                     '.tmp/controllers/menu-controller.js',
                     'src/js/board/tile-factory.js',
@@ -71,18 +76,24 @@ module.exports = function(grunt) {
             }
         },
         uglify: {
-            options: {
-                sourceMap: true,
-                sourceMapIncludeSources: true,
-                sourceMapIn: '.tmp/appjs/app.js.map',
-                mangle: {
-                    except: [
-                    ]
+            app: {
+                options: {
+                    sourceMap: true,
+                    sourceMapIncludeSources: true,
+                    sourceMapIn: '.tmp/appjs/app.js.map',
+                    mangle: {
+                        except: [
+                        ]
+                    }
+                },
+                files: {
+                    'dist/js/app.js': ['<%= concat.app.dest %>']
                 }
             },
-            dist: {
-                src : '<%= concat.dist.dest %>',
-                dest: 'dist/js/app.js'
+            lib: {
+                files: {
+                    'dist/js/lib.js': ['<%= concat.lib.dest %>']
+                }
             }
         },
         'ftpscript': {
@@ -108,7 +119,7 @@ module.exports = function(grunt) {
         'watch': {
             js: {
                 files: ['src/**/*.js'],
-                tasks: ['dev'],
+                tasks: ['concat:app', 'uglify:app'],
                 options: {
                     spawn: false
                 }
@@ -142,7 +153,7 @@ module.exports = function(grunt) {
         'clean', 'ngAnnotate', 'concat', 'copy:styles', 'copy:html', 'copy:lib', 'copy:images'
     ]);
 
-    grunt.registerTask('dev', ['build', 'copy:appjs', 'watch']);
+    grunt.registerTask('dev', ['build', 'copy:concatinatedJs', 'watch']);
     grunt.registerTask('prod', ['build', 'uglify']);
     grunt.registerTask('default', ['dev']);
     grunt.registerTask('publish', ['prod', 'ftpscript:publish']);
