@@ -153,8 +153,8 @@ module.exports = function(grunt) {
         'clean', 'ngAnnotate', 'concat', 'copy:styles', 'copy:html', 'copy:lib', 'copy:images'
     ]);
 
-    grunt.registerTask('dev', ['build', 'copy:concatinatedJs', 'watch']);
+    grunt.registerTask('dev', ['build', 'copy:concatinatedJs']);
     grunt.registerTask('prod', ['build', 'uglify']);
-    grunt.registerTask('default', ['dev']);
+    grunt.registerTask('default', ['dev', 'watch']);
     grunt.registerTask('publish', ['prod', 'ftpscript:publish']);
 };
