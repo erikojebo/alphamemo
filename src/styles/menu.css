@@ -23,6 +23,13 @@
 
 #game-types {
     margin-top: 30px;
+    opacity: 0.3;
+    border: 1px solid transparent;
+}
+
+#game-types.enabled {
+    opacity: 1;
+    transition: all 0.7s;
 }
 
 #game-types li span {
@@ -53,8 +60,11 @@ ul {
 #menu-container li {
     list-style: none;    
     display: inline-block;
-    cursor: pointer;
     font-size: 100px;
+}
+
+#menu-container .enabled li {
+    cursor: pointer;
 }
 
 #menu-container menu {

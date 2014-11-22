@@ -104,6 +104,29 @@ module.exports = function(grunt) {
                     }
                 ]
             }
+        },
+        'watch': {
+            js: {
+                files: ['src/**/*.js'],
+                tasks: ['dev'],
+                options: {
+                    spawn: false
+                }
+            },
+            html: {
+                files: ['src/**/*.html'],
+                tasks: ['copy:html'],
+                options: {
+                    spawn: false
+                }
+            },
+            styles: {
+                files: ['src/**/*.css'],
+                tasks: ['copy:styles'],
+                options: {
+                    spawn: false
+                }
+            }
         }
     });
 
@@ -113,12 +136,13 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-ftpscript');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('build', [
         'clean', 'ngAnnotate', 'concat', 'copy:styles', 'copy:html', 'copy:lib', 'copy:images'
     ]);
 
-    grunt.registerTask('dev', ['build', 'copy:appjs']);
+    grunt.registerTask('dev', ['build', 'copy:appjs', 'watch']);
     grunt.registerTask('prod', ['build', 'uglify']);
     grunt.registerTask('default', ['dev']);
     grunt.registerTask('publish', ['prod', 'ftpscript:publish']);

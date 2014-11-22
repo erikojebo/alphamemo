@@ -48,7 +48,10 @@ angular.module("alphamemo").controller("menuController", function ($scope) {
     };
 
     $scope.selectGameType = function (gameType) {
-        selectItem($scope.gameTypes, gameType);
+
+        if ($scope.hasSelectedTileSetup()) {
+            selectItem($scope.gameTypes, gameType);
+        }
     };
 
     $scope.selectTileSetup = function (tileSetup) {
@@ -60,6 +63,9 @@ angular.module("alphamemo").controller("menuController", function ($scope) {
             $scope.selectedGameTypeIdentifier();
     };
 
+    $scope.hasSelectedTileSetup = function () {
+        return $scope.selectedTileSetupIdentifier();
+    };
 
     function getSelectedIdenifier(items) {
         var selectedItem = _.find(items, function (item) {

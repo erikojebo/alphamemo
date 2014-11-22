@@ -1,6 +1,6 @@
 <section id='menu-container'>
 
-    <ul id='board-sizes'>
+  <ul id='board-sizes' ng-class="{ 'enabled': !hasSelectedTileSetup() }">
       <li ng-repeat="tileSetup in tileSetups"
           ng-class="{ 'selected': tileSetup.isSelected }"
           ng-click='selectTileSetup(tileSetup)'>
@@ -12,7 +12,7 @@
       </li>
     </ul>
 
-    <ul id='game-types'>
+    <ul id='game-types' ng-class="{ 'enabled': hasSelectedTileSetup() }">
       <li ng-repeat='gameType in gameTypes'
           ng-class="{ 'selected': gameType.isSelected }"
           ng-click='selectGameType(gameType)'>
