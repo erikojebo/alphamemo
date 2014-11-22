@@ -3,6 +3,10 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        clean: {
+            tmp: ['.tmp'],
+            dist: ['dist']
+        },
         copy: {
             appjs: {
                 expand: true,
@@ -63,8 +67,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-ng-annotate');
     grunt.loadNpmTasks('grunt-contrib-copy');
-
-    grunt.registerTask('concatAll', ['ngAnnotate', 'concat']);
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    
+    grunt.registerTask('concatAll', ['clean', 'ngAnnotate', 'concat']);
     grunt.registerTask('dev', ['concatAll', 'copy:appjs']);
     grunt.registerTask('prod', ['concatAll', 'uglify']);
     grunt.registerTask('default', ['dev']);
