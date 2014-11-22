@@ -84,6 +84,26 @@ module.exports = function(grunt) {
                 src : '<%= concat.dist.dest %>',
                 dest: 'dist/js/app.js'
             }
+        },
+        'ftpscript': {
+            publish: {
+                options: {
+                    host: 'wsw35.surf-town.net',
+                    authKey: 'surftown',
+                    passive: false
+                },
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'dist',
+                        src: [
+                            '**/*'
+                            //'!**/exclude.js'
+                        ],
+                        dest: '/eojebo/memo.erikojebo.se/'
+                    }
+                ]
+            }
         }
     });
 
@@ -92,12 +112,14 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-ng-annotate');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
-    
+    grunt.loadNpmTasks('grunt-ftpscript');
+
     grunt.registerTask('build', [
         'clean', 'ngAnnotate', 'concat', 'copy:styles', 'copy:html', 'copy:lib', 'copy:images'
     ]);
-    
+
     grunt.registerTask('dev', ['build', 'copy:appjs']);
     grunt.registerTask('prod', ['build', 'uglify']);
     grunt.registerTask('default', ['dev']);
+    grunt.registerTask('publish', ['prod', 'ftpscript:publish']);
 };
