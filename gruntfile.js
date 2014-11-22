@@ -12,6 +12,30 @@ module.exports = function(grunt) {
                 expand: true,
                 cwd: '.tmp/appjs/',
                 src: '*',
+                dest: 'dist/js/'
+            },
+            styles: {
+                expand: true,
+                cwd: 'src',
+                src: 'styles/*',
+                dest: 'dist/'
+            },
+            html: {
+                expand: true,
+                cwd: 'src',
+                src: '*.html',
+                dest: 'dist/'
+            },
+            images: {
+                expand: true,
+                cwd: 'src',
+                src: 'images/**/*',
+                dest: 'dist/'
+            },
+            lib: {
+                expand: true,
+                cwd: 'src',
+                src: 'lib/**/*',
                 dest: 'dist/'
             }
         },
@@ -58,7 +82,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 src : '<%= concat.dist.dest %>',
-                dest: 'dist/app.js'
+                dest: 'dist/js/app.js'
             }
         }
     });
@@ -69,8 +93,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
     
-    grunt.registerTask('concatAll', ['clean', 'ngAnnotate', 'concat']);
-    grunt.registerTask('dev', ['concatAll', 'copy:appjs']);
-    grunt.registerTask('prod', ['concatAll', 'uglify']);
+    grunt.registerTask('build', [
+        'clean', 'ngAnnotate', 'concat', 'copy:styles', 'copy:html', 'copy:lib', 'copy:images'
+    ]);
+    
+    grunt.registerTask('dev', ['build', 'copy:appjs']);
+    grunt.registerTask('prod', ['build', 'uglify']);
     grunt.registerTask('default', ['dev']);
 };
