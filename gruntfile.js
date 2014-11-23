@@ -80,7 +80,7 @@ module.exports = function(grunt) {
                 options: {
                     sourceMap: true,
                     sourceMapIncludeSources: true,
-                    sourceMapIn: '.tmp/appjs/app.js.map',
+                    sourceMapIn: '<%= concat.app.dest %>.map',
                     mangle: {
                         except: [
                         ]
@@ -150,7 +150,13 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('build', [
-        'clean', 'ngAnnotate', 'concat', 'copy:styles', 'copy:html', 'copy:lib', 'copy:images'
+        'clean',
+        'ngAnnotate',
+        'concat',
+        'copy:styles',
+        'copy:html',
+        'copy:lib',
+        'copy:images'
     ]);
 
     grunt.registerTask('dev', ['build', 'copy:concatinatedJs']);
