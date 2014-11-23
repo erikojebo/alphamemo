@@ -1,0 +1,28 @@
+.box-sizing(@mode: border-box) {
+    -webkit-box-sizing: @mode; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: @mode;    /* Firefox, other Gecko */
+    box-sizing: @mode;         /* Opera/IE 8+ */
+}
+
+.transition(@property: all, @duration, @timing-function: ease, @delay: 0s) {
+    -webkit-transition: @property @duration @timing-function @delay;
+    -moz-transition: @property @duration @timing-function @delay;
+    -o-transition: @property @duration @timing-function @delay;
+    transition: @property @duration @timing-function @delay;
+}
+
+.backface-visibility(@value) {
+    -ms-backface-visibility: @value;
+    -webkit-backface-visibility: @value;
+    -moz-backface-visibility: @value;
+    -o-backface-visibility: @value;
+    backface-visibility: @value;
+}
+
+.transform(@value) {
+    -ms-transform: @value;
+    -webkit-transform: @value;
+    -moz-transform: @value;
+    -o-transform: @value;
+    transform: @value;
+}

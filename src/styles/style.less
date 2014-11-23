@@ -1,0 +1,25 @@
+@import "variables.less";
+@import "mixins.less";
+
+body {
+    background-color: @background; 
+    font-family: arial;
+    padding-top: 30px;
+}
+
+.card .face, li, a#play {
+    border: 2px solid @foreground;
+    color: @foreground;
+    margin: 5px;
+}
+
+a {
+    color: @foreground;
+    text-decoration: none;
+}
+
+@media all and (max-height: 400px) {
+    body {
+        padding-top: 5px;
+    }
+}

@@ -14,12 +14,6 @@ module.exports = function(grunt) {
                 src: '*',
                 dest: 'dist/js/'
             },
-            styles: {
-                expand: true,
-                cwd: 'src',
-                src: 'styles/*',
-                dest: 'dist/'
-            },
             html: {
                 expand: true,
                 cwd: 'src',
@@ -39,6 +33,15 @@ module.exports = function(grunt) {
                 dest: 'dist/'
             }
         },
+        less: {
+            development: {
+                files: {
+                    ".tmp/styles/style.css": "src/styles/style.less",
+                    ".tmp/styles/menu.css": "src/styles/menu.less",
+                    ".tmp/styles/board.css": "src/styles/board.less"
+                }
+            }
+        },
         ngAnnotate: {
             options: {
                 singleQuotes: true
@@ -51,10 +54,7 @@ module.exports = function(grunt) {
             }
         },
         concat: {
-            options: {
-                sourceMap: true
-            },
-            lib: {
+            jsLib: {
                 src: [
                     'src/js/lib/angular.js',
                     'src/js/lib/angular-route.js',
@@ -63,7 +63,10 @@ module.exports = function(grunt) {
                 ],
                 dest: '.tmp/appjs/lib.js'
             },
-            app: {
+            jsApp: {
+                options: {
+                    sourceMap: true
+                },
                 src: [
                     'src/js/memo.js',
                     '.tmp/controllers/menu-controller.js',
@@ -73,6 +76,15 @@ module.exports = function(grunt) {
                     '.tmp/controllers/board-controller.js'
                 ],
                 dest: '.tmp/appjs/app.js'
+            },
+            styles: {
+                src: [
+                    'src/styles/reset.css',
+                    '.tmp/styles/style.css',
+                    '.tmp/styles/menu.css',
+                    '.tmp/styles/board.css'
+                ],
+                dest: 'dist/styles/app.css'
             }
         },
         uglify: {
@@ -80,19 +92,19 @@ module.exports = function(grunt) {
                 options: {
                     sourceMap: true,
                     sourceMapIncludeSources: true,
-                    sourceMapIn: '<%= concat.app.dest %>.map',
+                    sourceMapIn: '<%= concat.jsApp.dest %>.map',
                     mangle: {
                         except: [
                         ]
                     }
                 },
                 files: {
-                    'dist/js/app.js': ['<%= concat.app.dest %>']
+                    'dist/js/app.js': ['<%= concat.jsApp.dest %>']
                 }
             },
             lib: {
                 files: {
-                    'dist/js/lib.js': ['<%= concat.lib.dest %>']
+                    'dist/js/lib.js': ['<%= concat.jsLib.dest %>']
                 }
             }
         },
@@ -119,7 +131,7 @@ module.exports = function(grunt) {
         'watch': {
             js: {
                 files: ['src/**/*.js'],
-                tasks: ['concat:app', 'uglify:app'],
+                tasks: ['concat:jsApp', 'uglify:app'],
                 options: {
                     spawn: false
                 }
@@ -132,8 +144,8 @@ module.exports = function(grunt) {
                 }
             },
             styles: {
-                files: ['src/**/*.css'],
-                tasks: ['copy:styles'],
+                files: ['src/**/*.less'],
+                tasks: ['less:development', 'concat:styles'],
                 options: {
                     spawn: false
                 }
@@ -148,12 +160,13 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-ftpscript');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-less');
 
     grunt.registerTask('build', [
         'clean',
+        'less',
         'ngAnnotate',
         'concat',
-        'copy:styles',
         'copy:html',
         'copy:lib',
         'copy:images'
