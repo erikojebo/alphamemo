@@ -18,9 +18,10 @@ angular.module("alphamemo").controller("menuController", function ($scope) {
         };
     }
 
-    function createGameTypeViewModel(description, identifier) {
+    function createGameTypeViewModel(identifier, description1, description2) {
         return {
-            description: description,
+            description1: description1,
+            description2: description2,
             identifier: identifier
         };
     }
@@ -34,9 +35,9 @@ angular.module("alphamemo").controller("menuController", function ($scope) {
     ];
 
     $scope.gameTypes = [
-        createGameTypeViewModel("AB", "uppercase"),
-        createGameTypeViewModel("Ab", "mixedcase"),
-        createGameTypeViewModel("12", "numbers")
+        createGameTypeViewModel("uppercase", "AB"),
+        createGameTypeViewModel("mixedcase", "Ab"),
+        createGameTypeViewModel("numbers", "12")
     ];
 
     $scope.selectedTileSetupIdentifier = function () {

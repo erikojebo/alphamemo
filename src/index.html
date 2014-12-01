@@ -14,22 +14,28 @@
 
     <title>Alphamemo</title>
   </head>
-  <body ng-app="alphamemo" ng-controller='appController'>
+  <body ng-app="alphamemo"
+        ng-controller='appController'
+        ng-swipe-left="hideMenu()"
+        ng-swipe-right="showMenu()">
 
     <a href='' class='menu-toggle' ng-click='toggleMenuVisibility()'>
       <i class='fa fa-bars'></i>
     </a>
 
     <aside id='app-menu' ng-class="{ 'visible': isMenuVisible }">
-      <a href='' class='menu-toggle' ng-click='toggleMenuVisibility()'>
-        <i class='fa fa-bars'></i>
+      <a href='' class='menu-collapse' ng-click='toggleMenuVisibility()'>
+        <i class='fa fa-chevron-left'></i>
       </a>
       
       <menu>
         <h2>{{ localize("language") }}</h2>
-        <ul>
-          <li>English</li>
-          <li>Svenska</li>
+        <ul ng-repeat='language in languages' class='languages'>
+          <li ng-click='languages.select(language)'
+              ng-class="{ 'selected': language.isSelected }">
+            <i class='fa fa-check-square'></i>
+            {{ language.name }}
+          </li>
         </ul>
       </menu>
     </aside>    

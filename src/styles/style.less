@@ -1,7 +1,7 @@
 @import "variables.less";
 @import "mixins.less";
 
-@app-menu-width: 200px;
+@app-menu-width: 240px;
 
 body {
     background-color: @background; 
@@ -48,23 +48,40 @@ a {
         color: @background;
     }
 
-    .menu-toggle {
-        float: right;
-        position: static;
+    .menu-collapse {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        height: 100%;
     }
    
     h2 {
-        margin-bottom: 5px;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        text-align: center;
 
         z-index: 1;
     }
 
     li {
+        margin: 10px 4px;
+        cursor: pointer;
 
-        margin: 4px;
+        i {
+            visibility: hidden;
+            margin-right: 5px;
+        }
+    }
+
+    .selected {
+
     }
     
-    .transform(translateX(-200px));
+    .selected i {
+        visibility: visible;
+    }
+    
+    .transform(translateX(-@app-menu-width));
     .transition(@duration: 0.1s; @timing-function: ease-in-out);
     .box-sizing(border-box);
     

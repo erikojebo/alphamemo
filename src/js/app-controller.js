@@ -6,4 +6,14 @@ angular.module("alphamemo").controller("appController", function ($scope) {
     $scope.toggleMenuVisibility = function () {
         $scope.isMenuVisible = !$scope.isMenuVisible;
     };
+
+    $scope.hideMenu = function () {
+        $scope.isMenuVisible = false;
+    };
+    
+    $scope.showMenu = function () {
+        $scope.isMenuVisible = true;
+    };
+
+    $scope.languages = memo.localization.languages;
 });

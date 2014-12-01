@@ -1,6 +1,6 @@
 var memo = memo || {};
 
-var app = angular.module("alphamemo", ["ngRoute"]);
+var app = angular.module("alphamemo", ["ngRoute", "ngTouch"]);
 
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider
@@ -17,8 +17,8 @@ app.config(['$routeProvider', function($routeProvider) {
       });;
 }]);
 
-if ('addEventListener' in document) {
-    document.addEventListener('DOMContentLoaded', function() {
-        Origami.fastclick(document.body);
-    }, false);
-}
+// if ('addEventListener' in document) {
+//     document.addEventListener('DOMContentLoaded', function() {
+//         Origami.fastclick(document.body);
+//     }, false);
+// }

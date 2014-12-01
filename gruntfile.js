@@ -59,6 +59,7 @@ module.exports = function(grunt) {
                 src: [
                     'src/js/lib/angular.js',
                     'src/js/lib/angular-route.js',
+                    'src/js/lib/angular-touch.js',
                     'src/js/lib/lodash.js',
                     'src/js/lib/fastclick.js'
                 ],
@@ -70,6 +71,7 @@ module.exports = function(grunt) {
                 },
                 src: [
                     'src/js/memo.js',
+                    'src/js/language-viewmodel.js',
                     'src/js/localization.js',
                     '.tmp/controllers/app-controller.js',
                     '.tmp/controllers/menu-controller.js',
