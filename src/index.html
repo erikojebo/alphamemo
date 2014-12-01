@@ -14,7 +14,26 @@
 
     <title>Alphamemo</title>
   </head>
-  <body ng-app="alphamemo">
+  <body ng-app="alphamemo" ng-controller='appController'>
+
+    <a href='' class='menu-toggle' ng-click='toggleMenuVisibility()'>
+      <i class='fa fa-bars'></i>
+    </a>
+
+    <aside id='app-menu' ng-class="{ 'visible': isMenuVisible }">
+      <a href='' class='menu-toggle' ng-click='toggleMenuVisibility()'>
+        <i class='fa fa-bars'></i>
+      </a>
+      
+      <menu>
+        <h2>{{ localize("language") }}</h2>
+        <ul>
+          <li>English</li>
+          <li>Svenska</li>
+        </ul>
+      </menu>
+    </aside>    
+
     <section ng-view></section>
 
     <script type='text/javascript' src='js/lib.js'></script>

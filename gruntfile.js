@@ -48,6 +48,7 @@ module.exports = function(grunt) {
             },
             memo: {
                 files: {
+                    '.tmp/controllers/app-controller.js': ['src/js/app-controller.js'],
                     '.tmp/controllers/menu-controller.js': ['src/js/menu/menu-controller.js'],
                     '.tmp/controllers/board-controller.js': ['src/js/board/board-controller.js']
                 }
@@ -69,6 +70,8 @@ module.exports = function(grunt) {
                 },
                 src: [
                     'src/js/memo.js',
+                    'src/js/localization.js',
+                    '.tmp/controllers/app-controller.js',
                     '.tmp/controllers/menu-controller.js',
                     'src/js/board/tile-factory.js',
                     'src/js/board/tile-viewmodel.js',

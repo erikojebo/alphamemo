@@ -1,31 +1,32 @@
 <section id='menu-container'>
 
   <ul id='board-sizes' ng-class="{ 'enabled': !hasSelectedTileSetup() }">
-      <li ng-repeat="tileSetup in tileSetups"
-          ng-class="{ 'selected': tileSetup.isSelected }"
-          ng-click='selectTileSetup(tileSetup)'>
-        <table>
-          <tr ng-repeat='row in tileSetup.rows'>
-            <td ng-repeat='column in tileSetup.columns'></td>
-          </tr>
-        </table>
-      </li>
-    </ul>
+    <li ng-repeat="tileSetup in tileSetups"
+        ng-class="{ 'selected': tileSetup.isSelected }"
+        ng-click='selectTileSetup(tileSetup)'>
+      <table>
+        <tr ng-repeat='row in tileSetup.rows'>
+          <td ng-repeat='column in tileSetup.columns'></td>
+        </tr>
+      </table>
+    </li>
+  </ul>
 
-    <ul id='game-types' ng-class="{ 'enabled': hasSelectedTileSetup() }">
-      <li ng-repeat='gameType in gameTypes'
-          ng-class="{ 'selected': gameType.isSelected }"
-          ng-click='selectGameType(gameType)'>
-        <span>{{ gameType.description }}</span>
-      </li>
-    </ul>
+  <ul id='game-types' ng-class="{ 'enabled': hasSelectedTileSetup() }">
+    <li ng-repeat='gameType in gameTypes'
+        ng-class="{ 'selected': gameType.isSelected }"
+        ng-click='selectGameType(gameType)'>
+      <span>{{ gameType.description }}</span>
+    </li>
+  </ul>
 
-    <menu>
-      <a id="play"
-         href="#/board/{{ selectedGameTypeIdentifier() }}/{{ selectedTileSetupIdentifier() }}/"
-         ng-class="{ 'enabled': isSetupComplete() }">
-        <i class='fa fa-play'></i>
-        <a />
-    </menu>
+  <menu>
+    <a id="play"
+       href="#/board/{{ selectedGameTypeIdentifier() }}/{{ selectedTileSetupIdentifier() }}/"
+       ng-class="{ 'enabled': isSetupComplete() }">
+      <i class='fa fa-play'></i>
+    </a>
+
+  </menu>
 
 </section>

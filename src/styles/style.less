@@ -1,13 +1,16 @@
 @import "variables.less";
 @import "mixins.less";
 
+@app-menu-width: 200px;
+
 body {
     background-color: @background; 
     font-family: arial;
     padding-top: 30px;
+    color: white;
 }
 
-.card .face, li, a#play {
+.card .face, #menu-container li, a#play {
     border: 2px solid @foreground;
     color: @foreground;
     margin: 5px;
@@ -16,6 +19,59 @@ body {
 a {
     color: @foreground;
     text-decoration: none;
+}
+
+.menu-toggle {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 30px;
+}
+
+#app-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-size: 20px;
+    
+    padding: 12px;
+
+    text-transform: capitalize;
+    background: @foreground;
+    color: @background;
+    height: 100%;
+    width: @app-menu-width;
+
+    border-right: solid 2px @foreground;
+ 
+    a {
+        color: @background;
+    }
+
+    .menu-toggle {
+        float: right;
+        position: static;
+    }
+   
+    h2 {
+        margin-bottom: 5px;
+
+        z-index: 1;
+    }
+
+    li {
+
+        margin: 4px;
+    }
+    
+    .transform(translateX(-200px));
+    .transition(@duration: 0.1s; @timing-function: ease-in-out);
+    .box-sizing(border-box);
+    
+    &.visible {
+        .transform(translateX(0px));
+        .transition(@duration: 0.1s; @timing-function: ease-in-out);
+    }
 }
 
 @media all and (max-height: 400px) {
