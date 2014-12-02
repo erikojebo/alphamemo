@@ -1,4 +1,4 @@
-angular.module("alphamemo").controller("menuController", function ($scope) {
+angular.module("alphamemo").controller("menuController", function ($scope, $location, $timeout) {
 
     function range(length) {
         var values = [];
@@ -34,6 +34,7 @@ angular.module("alphamemo").controller("menuController", function ($scope) {
         createTileSetupViewModel(5,4)
     ];
 
+    memo.game.gameTypes.deselectAll();
     $scope.gameTypes = memo.game.gameTypes;
 
     $scope.selectedTileSetupIdentifier = function () {
@@ -48,6 +49,12 @@ angular.module("alphamemo").controller("menuController", function ($scope) {
 
         if ($scope.hasSelectedTileSetup()) {
             selectItem($scope.gameTypes, gameType);
+
+            $timeout(function () {
+                $location.path(
+                    '/board/' + $scope.selectedGameTypeIdentifier() + '/' +
+                        $scope.selectedTileSetupIdentifier());
+            }, 300);
         }
     };
 

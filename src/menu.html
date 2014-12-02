@@ -20,14 +20,4 @@
       <span class='description2'>{{ gameType.description2 }}</span>
     </li>
   </ul>
-
-  <menu>
-    <a id="play"
-       href="#/board/{{ selectedGameTypeIdentifier() }}/{{ selectedTileSetupIdentifier() }}/"
-       ng-class="{ 'enabled': isSetupComplete() }">
-      <i class='fa fa-play'></i>
-    </a>
-
-  </menu>
-
 </section>
