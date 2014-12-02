@@ -41,7 +41,7 @@ memo.game.gameTypes.register({
             makePair('hat', 'cat'),
             makePair('dog', 'fog'),
             makePair('pig', 'fig'),
-            makePair('more', 'four'),
+            makePair('tall', 'wall'),
             makePair('car', 'star'),
             makePair('goat', 'boat'),
             makePair('whale', 'tail'),
