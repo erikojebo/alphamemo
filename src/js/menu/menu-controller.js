@@ -34,11 +34,7 @@ angular.module("alphamemo").controller("menuController", function ($scope) {
         createTileSetupViewModel(5,4)
     ];
 
-    $scope.gameTypes = [
-        createGameTypeViewModel("uppercase", "AB"),
-        createGameTypeViewModel("mixedcase", "Ab"),
-        createGameTypeViewModel("numbers", "12")
-    ];
+    $scope.gameTypes = memo.game.gameTypes;
 
     $scope.selectedTileSetupIdentifier = function () {
         return getSelectedIdenifier($scope.tileSetups);

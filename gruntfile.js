@@ -141,7 +141,7 @@ module.exports = function(grunt) {
         'watch': {
             js: {
                 files: ['src/**/*.js'],
-                tasks: ['concat:jsApp', 'uglify:app'],
+                tasks: ['ngAnnotate', 'concat:jsApp', 'uglify:app'],
                 options: {
                     spawn: false
                 }
