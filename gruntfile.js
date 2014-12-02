@@ -81,6 +81,7 @@ module.exports = function(grunt) {
                     'src/js/game/gametypes/mixedcase.js',
                     'src/js/game/gametypes/lowercase.js',
                     'src/js/game/gametypes/numbers.js',
+                    'src/js/game/gametypes/rhyme.js',
                     'src/js/board/tile-viewmodel.js',
                     'src/js/board/board-viewmodel.js',
                     '.tmp/controllers/board-controller.js'

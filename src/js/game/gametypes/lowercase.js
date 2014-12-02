@@ -1,6 +1,6 @@
 memo.game.gameTypes.register({
     identifier: 'lowercase',
-    description1: 'ab',
+    description1: { en: 'ab' },
     create: function createLowercaseValuePairs() {
         var pairs = [];
 

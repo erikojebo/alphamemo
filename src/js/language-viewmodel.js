@@ -4,7 +4,8 @@ memo.localization.languageViewModel = memo.localization.languageViewModel || {};
 memo.localization.languageViewModel.create = function (name, key) {
   return {
       name: name,
-      key: key
+      key: key,
+      isSelected: false
   };
 };
 

@@ -1,6 +1,6 @@
 memo.game.gameTypes.register({
     identifier: 'mixedcase',
-    description1: 'Ab',
+    description1: { en: 'Ab' },
     create: function () {
         var pairs = [];
 

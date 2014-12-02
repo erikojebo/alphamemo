@@ -7,7 +7,9 @@ memo.viewModels.board.create = function (gameConfig, timeoutService) {
     var unflipPromise = null;
 
     var tileValuePairs = memo.game.gameTypes[gameConfig.gameType.toLowerCase()].createTiles(
-        gameConfig.totalTileCount());
+        gameConfig.totalTileCount(),
+        memo.localization.languages.selected().key
+    );
 
     var tileViewModels = [];
 

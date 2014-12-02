@@ -24,6 +24,10 @@ memo.localization = memo.localization || {};
 
     memo.localization.languages.select(
         localStorage.selectedLanguageKey || currentBrowserLanguage());
+
+    memo.localization.selectedLanguageKey = function () {
+        return memo.localization.languages.selected().key;
+    };
     
     var translations = {
         language: { en: 'language', sv: 'språk' }

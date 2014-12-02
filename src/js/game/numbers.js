@@ -1,4 +1,4 @@
-memo.game.gameTypes.register({
+memo.game.gameType.register({
     identifier: 'numbers',
     description1: { en: '12' },
     create: function createNumberValuePairs(tileCount) {
