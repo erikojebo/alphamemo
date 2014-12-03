@@ -119,6 +119,18 @@ module.exports = function(grunt) {
                 }
             }
         },
+        cacheBust: {
+            options: {
+                encoding: 'utf8',
+                algorithm: 'md5',
+                length: 16
+            },
+            assets: {
+                files: [{
+                    src: ['dist/index.html']
+                }]
+            }
+        },
         'ftpscript': {
             publish: {
                 options: {
@@ -172,6 +184,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-ftpscript');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-cache-bust');
 
     grunt.registerTask('build', [
         'clean',
@@ -180,7 +193,8 @@ module.exports = function(grunt) {
         'concat',
         'copy:html',
         'copy:lib',
-        'copy:images'
+        'copy:images',
+        'cacheBust'
     ]);
 
     grunt.registerTask('dev', ['build', 'copy:concatinatedJs']);
