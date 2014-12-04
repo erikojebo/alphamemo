@@ -1,7 +1,20 @@
 memo.game.gameTypes.register({
-    identifier: 'lowercase',
-    description1: { en: 'ab' },
-    create: function createLowercaseValuePairs() {
+    description1: { en: 'a' },
+    description2: { en: 'a' },
+    subTypes: [{
+        identifier: 'lowercase',
+        description1CssClass: 'lower',
+        description2CssClass: 'lower'
+    }, {
+        identifier: 'mixedcase',
+        description1CssClass: 'upper',
+        description2CssClass: 'lower'
+    }, {
+        identifier: 'uppercase',
+        description1CssClass: 'upper',
+        description2CssClass: 'upper'
+    }],
+    create: function () {
         var pairs = [];
 
         var lowercaseStartIndex = 'a'.charCodeAt(0);

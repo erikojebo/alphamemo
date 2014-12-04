@@ -16,8 +16,12 @@
     <li ng-repeat='gameType in gameTypes'
         ng-class="{ 'selected': gameType.isSelected }"
         ng-click='selectGameType(gameType)'>
-      <span class='description1'>{{ gameType.localizedDescription1() }}</span>
-      <span class='description2'>{{ gameType.localizedDescription2() }}</span>
+      <span class='description1' ng-class="gameType.description1CssClass">
+        {{ gameType.localizedDescription1() }}
+      </span>
+      <span class='description2' ng-class="gameType.description2CssClass">
+        {{ gameType.localizedDescription2() }}
+      </span>
     </li>
   </ul>
 </section>

@@ -77,8 +77,6 @@ module.exports = function(grunt) {
                     '.tmp/controllers/menu-controller.js',
                     'src/js/game/valuepair.js',
                     'src/js/game/gametypes.js',
-                    'src/js/game/gametypes/uppercase.js',
-                    'src/js/game/gametypes/mixedcase.js',
                     'src/js/game/gametypes/lowercase.js',
                     'src/js/game/gametypes/numbers.js',
                     'src/js/game/gametypes/rhyme.js',

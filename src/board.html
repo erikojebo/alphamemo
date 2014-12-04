@@ -3,7 +3,9 @@
     <td ng-repeat="tile in row"
         ng-click='board.flip(tile)'>
       <div class='card' ng-class="{ 'flipped': tile.isFlipped }">
-        <div class="face front"><span class='val'>{{ tile.value }}</span></div>
+        <div class="face front">
+          <span class='val' ng-class='tile.cssClass'>{{ tile.value }}</span>
+        </div>
         <div class="face back"></div>
       </div>
     </td>

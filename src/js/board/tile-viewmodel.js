@@ -1,9 +1,10 @@
 memo.viewModels = memo.viewModels || {};
 memo.viewModels.tile = {};
 
-memo.viewModels.tile.create = function(value) {
+memo.viewModels.tile.create = function(value, cssClass) {
     return {
         value: value,
+        cssClass: cssClass,        
         isFlipped: false,
         match: null // set by calling connect with two view matching view models
     };

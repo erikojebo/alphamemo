@@ -6,7 +6,9 @@ memo.viewModels.board.create = function (gameConfig, timeoutService) {
     var fliptime = 2000;
     var unflipPromise = null;
 
-    var tileValuePairs = memo.game.gameTypes[gameConfig.gameType.toLowerCase()].createTiles(
+    var gameType = memo.game.gameTypes[gameConfig.gameType.toLowerCase()];
+
+    var tileValuePairs = gameType.create(
         gameConfig.totalTileCount(),
         memo.localization.languages.selected().key
     );
@@ -14,8 +16,13 @@ memo.viewModels.board.create = function (gameConfig, timeoutService) {
     var tileViewModels = [];
 
     for (var pairIndex = 0; pairIndex < tileValuePairs.length; pairIndex++) {
-        var viewModel1 = memo.viewModels.tile.create(tileValuePairs[pairIndex].value1);
-        var viewModel2 = memo.viewModels.tile.create(tileValuePairs[pairIndex].value2);
+        var viewModel1 = memo.viewModels.tile.create(
+            tileValuePairs[pairIndex].value1,
+            gameType.description1CssClass);
+        
+        var viewModel2 = memo.viewModels.tile.create(
+            tileValuePairs[pairIndex].value2,
+            gameType.description2CssClass);
 
         memo.viewModels.tile.connect(viewModel1, viewModel2);
 
