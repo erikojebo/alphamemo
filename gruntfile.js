@@ -150,23 +150,15 @@ module.exports = function(grunt) {
             }
         },
         'watch': {
-            js: {
-                files: ['src/**/*.js'],
-                tasks: ['ngAnnotate', 'concat:jsApp', 'uglify:app'],
+            gruntConfig: {
+                files: 'gruntfile.js',
                 options: {
-                    spawn: false
+                    reload: true
                 }
             },
-            html: {
-                files: ['src/**/*.html'],
-                tasks: ['copy:html'],
-                options: {
-                    spawn: false
-                }
-            },
-            styles: {
-                files: ['src/**/*.less'],
-                tasks: ['less:development', 'concat:styles'],
+            app: {
+                files: ['src/**/*.js', 'src/**/*.html', 'src/**/*.less'],
+                tasks: ['dev'],
                 options: {
                     spawn: false
                 }
@@ -184,8 +176,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-cache-bust');
 
+    grunt.registerTask('rebuild', ['clean', 'build']);
+
     grunt.registerTask('build', [
-        'clean',
         'less',
         'ngAnnotate',
         'concat',
@@ -195,7 +188,7 @@ module.exports = function(grunt) {
     ]);
 
     grunt.registerTask('dev', ['build', 'copy:concatinatedJs', 'cacheBust']);
-    grunt.registerTask('prod', ['build', 'uglify', 'cacheBust']);
+    grunt.registerTask('prod', ['rebuild', 'uglify', 'cacheBust']);
     grunt.registerTask('default', ['dev', 'watch']);
     grunt.registerTask('publish', ['prod', 'ftpscript:publish']);
 };

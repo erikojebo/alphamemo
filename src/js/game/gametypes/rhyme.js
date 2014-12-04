@@ -1,7 +1,15 @@
 memo.game.gameTypes.register({
-    identifier: 'rhyme',
     description1: { en: 'car', sv: 'gris' },
     description2: { en: 'star', sv: 'spis' },
+    subTypes: [{
+        identifier: 'rhyme-uppercase',
+        description1CssClass: 'upper',
+        description2CssClass: 'upper'
+    }, {
+        identifier: 'rhyme-lowercase',
+        description1CssClass: 'lower',
+        description2CssClass: 'lower'
+    }],
     create: function (tileCount, languageKey) {
         var makePair = memo.game.valuePair.create;
 

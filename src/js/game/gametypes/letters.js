@@ -2,6 +2,10 @@ memo.game.gameTypes.register({
     description1: { en: 'a' },
     description2: { en: 'a' },
     subTypes: [{
+        identifier: 'uppercase',
+        description1CssClass: 'upper',
+        description2CssClass: 'upper'
+    }, {
         identifier: 'lowercase',
         description1CssClass: 'lower',
         description2CssClass: 'lower'
@@ -9,10 +13,6 @@ memo.game.gameTypes.register({
         identifier: 'mixedcase',
         description1CssClass: 'upper',
         description2CssClass: 'lower'
-    }, {
-        identifier: 'uppercase',
-        description1CssClass: 'upper',
-        description2CssClass: 'upper'
     }],
     create: function () {
         var pairs = [];
