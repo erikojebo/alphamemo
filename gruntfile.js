@@ -193,12 +193,11 @@ module.exports = function(grunt) {
         'concat',
         'copy:html',
         'copy:lib',
-        'copy:images',
-        'cacheBust'
+        'copy:images'
     ]);
 
-    grunt.registerTask('dev', ['build', 'copy:concatinatedJs']);
-    grunt.registerTask('prod', ['build', 'uglify']);
+    grunt.registerTask('dev', ['build', 'copy:concatinatedJs', 'cacheBust']);
+    grunt.registerTask('prod', ['build', 'uglify', 'cacheBust']);
     grunt.registerTask('default', ['dev', 'watch']);
     grunt.registerTask('publish', ['prod', 'ftpscript:publish']);
 };
