@@ -90,6 +90,12 @@ memo.viewModels.board.create = function (gameConfig, timeoutService) {
             return vm.isMatched;
         });
     }
+
+    if (gameConfig.revealBoard) {
+        tileViewModels.forEach(function (vm) {
+           vm.isFlipped = true; 
+        });
+    }
     
     return {
         rows: tileRows,

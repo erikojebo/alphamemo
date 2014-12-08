@@ -1,4 +1,4 @@
-angular.module("alphamemo").controller("boardController", function ($scope, $routeParams, $timeout) {
+angular.module("alphamemo").controller("boardController", function ($scope, $routeParams, $timeout, $location) {
 
     function parseGameConfiguration() {
         var boardSize = $routeParams.boardSize;
@@ -8,10 +8,13 @@ angular.module("alphamemo").controller("boardController", function ($scope, $rou
         var rowCount = parseInt(parts[0]);
         var columnCount = parseInt(parts[1]);
 
+        var queryStringParams = $location.search();
+        
         return {
             gameType: gameType,
             rowCount: rowCount,
             columnCount: columnCount,
+            revealBoard: queryStringParams.reveal,
             totalTileCount: function () {
                 return rowCount * columnCount;
             }

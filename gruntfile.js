@@ -149,6 +149,42 @@ module.exports = function(grunt) {
                 ]
             }
         },
+        'autoshot': {
+            responsive: {
+                options: {
+                    path: '.tmp/screenshots',
+                    remote: null,
+                    local: {
+                        path: './dist',
+                        port: 16332,
+                        files: [{
+                                src: 'index.html#/menu/',
+                                dest: 'menu.png',
+                                delay: 0
+                            }, {
+                                src: 'index.html#/board/rhyme-uppercase/3x2?reveal',
+                                dest: 'small_board.png',
+                                delay: 0
+                            }, {
+                                src: 'index.html#/board/rhyme-uppercase/4x3?reveal',
+                                dest: 'medium_board.png',
+                                delay: 0
+                            }, {
+                                src: 'index.html#/board/rhyme-uppercase/5x4?reveal',
+                                dest: 'large_board.png',
+                                delay: 0
+                            }
+                        ]
+                    },
+                    viewport: [
+                        '1980x1080', '1200x800',  // Desktop
+                        '320x528', '528x320',     // iPhone 5
+                        '384x640', '640x384',     // Galaxy Nexus
+                        '1024x768', '768x1024'    // iPad
+                    ]
+                }
+            }
+        },
         'watch': {
             gruntConfig: {
                 files: 'gruntfile.js',
@@ -175,6 +211,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-cache-bust');
+    grunt.loadNpmTasks('grunt-autoshot');
 
     grunt.registerTask('rebuild', ['clean', 'build']);
 
@@ -187,8 +224,9 @@ module.exports = function(grunt) {
         'copy:images'
     ]);
 
-    grunt.registerTask('dev', ['build', 'copy:concatinatedJs', 'cacheBust']);
-    grunt.registerTask('prod', ['rebuild', 'uglify', 'cacheBust']);
+    grunt.registerTask('dev', ['build', 'copy:concatinatedJs']);
+    grunt.registerTask('prod', ['rebuild', 'uglify']);
     grunt.registerTask('default', ['dev', 'watch']);
     grunt.registerTask('publish', ['prod', 'ftpscript:publish']);
+    grunt.registerTask('screenshot', ['prod', 'autoshot']);
 };
